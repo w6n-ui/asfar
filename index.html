@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>اسفار للحج و العمرة</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="https://i.postimg.cc/8CBgWVPs/2025-02-02-033125-removebg-preview.png" alt="شعار الحملة">
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#contact">تواصل معنا</a></li>
+                <li><a href="https://www.instagram.com/asfar_transport22">حسابنا</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="hero" class="section-padding">
+            <h1>الرحلة الروحانية - الحج والعمرة</h1>
+            <p>اكتشف سحر العمرة والحج مع حملتنا المميزة، واستمتع بأفضل الخدمات.</p>
+        </section>
+
+        <section id="features" class="section-padding">
+            <h2>مميزات حملتنا</h2>
+            <div class="features-list">
+                <div class="feature-item">
+                    <h3>وسائل النقل الفاخرة</h3>
+                    <p>نقدم لك وسائل النقل الفاخرة التي تضمن لك راحة تامة أثناء رحلتك.</p>
+                </div>
+                <div class="feature-item">
+                    <h3>الإقامة الفاخرة</h3>
+                    <p>نحرص على تقديم أفضل أماكن الإقامة التي توفر لك راحة وهدوء.</p>
+                </div>
+                <div class="feature-item">
+                    <h3>خدمات مميزة</h3>
+                    <p>نقدم لك خدمات مميزة طوال رحلتك، من مرشدين متخصصين إلى المساعدين الشخصيين.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="vaccine" class="section-padding">
+            <h2>أهمية اللقاح الشوكي</h2>
+            <p>نظرًا للوضع الصحي العالمي، يُطلب من جميع المشاركين في الحملة أخذ اللقاح الشوكي (لقاح كورونا) قبل السفر.</p>
+            <p>يرجى التأكد من أخذ الجرعة اللازمة قبل موعد الرحلة لضمان سلامتك وسلامة الآخرين.</p>
+            <div class="vaccine-info">
+                <p>تُسهم اللقاحات في تقليل خطر الإصابة والعدوى وتساعد في الحفاظ على صحة الحجاج والمعتمرين.</p>
+                <img src="https://i.postimg.cc/SsGW8pVN/2025-02-02-042419.png" alt="لقاح كورونا">
+            </div>
+        </section>
+
+        <section id="booking" class="section-padding">
+            <h2>احجز رحلتك الآن</h2>
+            <form action="booking_page.html" method="GET">
+                <label for="trip-type">نوع الرحلة:</label>
+                <select id="trip-type" name="trip-type">
+                    <option value="عمرة">عمرة</option>
+                    <option value="حج">حج</option>
+                </select>
+
+                <label for="transport">وسيلة النقل:</label>
+                <select id="transport" name="transport">
+                    <option value="بر">بر</option>
+                    <option value="طيران">طيران</option>
+                </select>
+
+                <label for="people-count">عدد الأشخاص:</label>
+                <input type="number" id="people-count" name="people-count" min="1" max="5" value="1">
+
+                <div id="total-summary">
+                    <p>المجموع لكل شخص: <span id="total-per-person">0</span> ريال</p>
+                    <p>المجموع الإجمالي: <span id="total-price">0</span> ريال</p>
+                </div>
+
+                <button type="submit">احجز الآن</button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>حقوق الموقع محفوظة بالكامل - اسفار للحج و العمره</p>
+        <p>عدد الزوار: <span id="visitor-count">0</span></p>
+    </footer>
+
+    <script>
+        // أسعار الرحلات في JSON
+        const prices = {
+            "عمرة": {
+                "بر": 95,
+                "طيران": 205
+            },
+            "حج": {
+                "بر": 1500,
+                "طيران": 2050
+            }
+        };
+
+        // تحديث عدد الزوار باستخدام localStorage
+        let visitorCount = localStorage.getItem('visitorCount');
+        if (visitorCount === null) {
+            visitorCount = 1;
+        } else {
+            visitorCount = parseInt(visitorCount) + 1;
+        }
+        localStorage.setItem('visitorCount', visitorCount);
+        document.getElementById('visitor-count').innerText = visitorCount;
+
+        // احتساب السعر بناءً على الرحلة ووسيلة النقل وعدد الأشخاص
+        function calculateTotal() {
+            const tripType = document.getElementById('trip-type').value;
+            const transport = document.getElementById('transport').value;
+            const peopleCount = parseInt(document.getElementById('people-count').value);
+
+            const pricePerPerson = prices[tripType][transport];
+            const total = pricePerPerson * peopleCount;
+
+            // عرض المجموع
+            document.getElementById('total-per-person').innerText = pricePerPerson;
+            document.getElementById('total-price').innerText = total;
+        }
+
+        // تحديث المجموع عند تغيير الاختيارات
+        document.getElementById('trip-type').addEventListener('change', calculateTotal);
+        document.getElementById('transport').addEventListener('change', calculateTotal);
+        document.getElementById('people-count').addEventListener('input', calculateTotal);
+
+        // حساب السعر عند تحميل الصفحة لأول مرة
+        window.onload = calculateTotal;
+        function redirectToPayment() {
+        // إضافة الأنميشن بالضغط على الزر
+        const button = document.getElementById("book-now");
+        button.classList.add("button-click-animation");
+
+        // الانتظار لمدة الأنميشن ثم التوجه لصفحة الدفع
+        setTimeout(function() {
+            window.location.href = "booking_page.html"; // قم بتغيير الرابط إلى رابط صفحة الدفع الخاصة بك
+        }, 300); // مدة الأنميشن 0.3 ثانية
+    }
+    </script>
+</body>
+</html>

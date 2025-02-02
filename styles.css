@@ -1,0 +1,294 @@
+/* الأساسيات */
+body {
+    font-family: 'Cairo', sans-serif;
+    background-color: #f5f5f5;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+/* الهيدر */
+header {
+    background-color: #2d6a4f;
+    color: #fff;
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+header img {
+    width: 80px; /* تم تقليص العرض */
+    height: auto; /* الحفاظ على نسبة الأبعاد */
+}
+
+header nav ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+header nav a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+/* المزايا */
+#features {
+    background-color: #fff;
+    padding: 50px 15px;
+    text-align: center;
+}
+
+#features h2 {
+    font-size: 32px;
+    color: #2d6a4f;
+    margin-bottom: 30px;
+}
+
+.features-list {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.feature-item {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+    width: 30%;
+    text-align: center;
+}
+
+.feature-item:hover {
+    transform: scale(1.05);
+}
+
+.feature-item h3 {
+    font-size: 22px;
+    color: #2d6a4f;
+    margin-bottom: 15px;
+}
+
+.feature-item p {
+    font-size: 16px;
+    color: #555;
+}
+
+/* اللقاح الشوكي */
+#vaccine {
+    background-color: #f0f0f0;
+    padding: 50px 15px;
+    text-align: center;
+}
+
+#vaccine h2 {
+    font-size: 32px;
+    color: #2d6a4f;
+    margin-bottom: 30px;
+}
+
+#vaccine p {
+    font-size: 18px;
+    color: #555;
+    margin-bottom: 20px;
+}
+
+.vaccine-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.vaccine-info img {
+    width: 250px;
+    height: auto;
+    border-radius: 8px;
+}
+
+.vaccine-info p {
+    font-size: 16px;
+    color: #333;
+    max-width: 500px;
+    line-height: 1.6;
+}
+
+/* حجز الرحلة */
+#booking {
+    background-color: #fff;
+    padding: 50px 15px;
+    text-align: center;
+}
+
+#booking h2 {
+    font-size: 32px;
+    color: #2d6a4f;
+    margin-bottom: 30px;
+}
+
+#booking form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+#booking form label {
+    font-size: 18px;
+    color: #333;
+}
+
+#booking form select, #booking form input {
+    padding: 10px;
+    font-size: 16px;
+    width: 100%;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+}
+
+#booking form button {
+    background-color: #2d6a4f;
+    color: white;
+    padding: 10px;
+    font-size: 18px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+#booking form button:hover {
+    background-color: #1e4c37;
+}
+
+/* الفوتر */
+footer {
+    background-color: #2d6a4f;
+    color: #fff;
+    text-align: center;
+    padding: 20px 15px;
+}
+
+footer p {
+    margin: 10px 0;
+}
+
+footer #visitor-count {
+    font-weight: bold;
+}
+
+/* الHero */
+#hero {
+    background-color: #f0f0f0;
+    padding: 80px 15px;
+    text-align: center; 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#hero h1 {
+    font-size: 36px;
+    color: #2d6a4f;
+    margin-bottom: 20px;
+}
+
+#hero p {
+    font-size: 20px;
+    color: #555;
+    margin-bottom: 20px;
+    max-width: 800px;
+    line-height: 1.6;
+}
+
+/* استجابة للأجهزة الصغيرة */
+@media (max-width: 768px) {
+    header nav ul {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    #features .features-list {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .feature-item {
+        width: 80%;
+    }
+
+    #booking form {
+        width: 90%;
+    }
+
+    #hero h1 {
+        font-size: 28px;
+    }
+
+    #hero p {
+        font-size: 18px;
+    }
+}
+
+@media (max-width: 480px) {
+    header {
+        padding: 10px;
+    }
+
+    header img {
+        width: 60px;
+    }
+
+    header nav ul {
+        gap: 5px;
+    }
+
+    #features h2 {
+        font-size: 28px;
+    }
+
+    .feature-item {
+        width: 100%;
+    }
+
+    #booking h2 {
+        font-size: 28px;
+    }
+
+    #hero h1 {
+        font-size: 24px;
+    }
+
+    #hero p {
+        font-size: 16px;
+    }
+}
+/* الأنميشن للزر */
+@keyframes buttonClick {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    50% {
+        transform: scale(1.1);
+        opacity: 0.7;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+#booking form button:active {
+    animation: buttonClick 0.3s ease;
+}
